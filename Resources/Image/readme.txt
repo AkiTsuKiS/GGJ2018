@@ -1,0 +1,12 @@
+background：藍天，遊戲背景
+explosionItem：連鎖反應道具之一，觸發時會造成圓形爆炸AOE
+explosionWave：連鎖反應效果，觸發爆炸時所產出的圓形波
+level1~3：第一至三關的背景圖
+player_noraml：玩家(未跳起時)
+player_jumping：玩家(空中)
+player_jumped：玩家(從空中著陸後)
+target：遊戲中要送到邊界的目標
+titlePage：遊戲封面頁，內帶標題及開始鍵
+twisterItem：連鎖反應道具之一，觸發時會出現打轉移動小龍捲風
+twister：連鎖反應效果，會打轉移動的小龍捲風
+wave：玩家造成的波
