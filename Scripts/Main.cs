@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Main : MonoBehaviour {
+public class Main : MonoBehaviour
+{
+	void Awake()
+	{
+		Instance.gameProc = new GameProc();
+	}
 
-	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+		Instance.gameProc.enable();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{	
 	}
 }
