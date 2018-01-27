@@ -112,6 +112,7 @@ public class MainProc : MonoBehaviour {
 	void Explosion(object args)
 	{
 		EventManager.RemoveEventListener("JumpEnd", Explosion);
-		ObjectCreator.createPrefabs("wave",wave,"wave");
+		GameObject _wave = ObjectCreator.createPrefabs("wave",wave,"wave");
+		_wave.transform.position = new Vector3(Global.playerX, _wave.transform.position.y, Global.playerZ);
 	}
 }
