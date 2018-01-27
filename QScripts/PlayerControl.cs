@@ -33,7 +33,6 @@ public class PlayerControl : MonoBehaviour {
 				isJumping = false;
 				state = "landed";
 				GetComponent<SpriteRenderer>().sprite = landed;
-				EventManager.DispatchEvent("JumpEnd");
 			}
 			else
 			{

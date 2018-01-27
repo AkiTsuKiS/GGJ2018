@@ -108,14 +108,13 @@ public class MainProc : MonoBehaviour {
 		Global.gameStatu = Global.GameStatu.Jumping;
 		_playerObject.GetComponentInChildren<PlayerControl>().makeHeJump(Global.ratio * 2f);
 		MicrophoneHandler.ReplayRecord();
-		EventManager.AddEventListener("JumpEnd", Explosion);
+		StartCoroutine(Explosion());
 	}
 
-	void Explosion(object args)
+	IEnumerator Explosion()
 	{
 		print("Explosion");
-
-		EventManager.RemoveEventListener("JumpEnd", Explosion);
+		yield return new WaitForSeconds(2f);
 		GameObject _wave = ObjectCreator.createPrefabs("wave",wave,"wave");
 		_wave.transform.position = new Vector3(Global.playerX, _wave.transform.position.y, Global.playerZ);
 	}
