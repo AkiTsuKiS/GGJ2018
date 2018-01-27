@@ -16,7 +16,7 @@ public static class Global
 	public static int level = 1;
 	public static GameStatu gameStatu; 
 	public static float playerX;
-	public static float playerY;
+	public static float playerZ;
 	public static float radio;
 	public static int reward;
 	public static int Excellent;
