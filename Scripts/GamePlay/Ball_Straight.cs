@@ -27,4 +27,5 @@ public class Ball_Straight : Ball_Base {
 		{
 			speed = 0;
 		}
+	}
 }
