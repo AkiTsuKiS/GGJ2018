@@ -27,39 +27,56 @@ public class Ball_Base : MonoBehaviour {
 				transform.rotation = Quaternion.Euler(new Vector3(90f, 0, (180f - transform.eulerAngles.y)));
 			}
 		}
-		else if (collision.transform.tag == "Ball")
+		else if (collision.transform.tag == "Ball" || collision.transform.tag == "Bomb")
 		{
-			if (collision.transform.GetComponent<Ball_Base>().speed < 0.1f)
+			if (collision.transform.tag == "Ball")
 			{
-				collision.transform.GetComponent<Ball_Base>().speed = speed;
-				speed = speed / 10f;
-				collision.transform.rotation = transform.rotation;
+				if (collision.transform.GetComponent<Ball_Base>().speed < 0.1f)
+				{
+					collision.transform.GetComponent<Ball_Base>().speed = speed;
+					speed = speed / 10f;
+					collision.transform.rotation = transform.rotation;
+					speed = speed - 0.5f;
+					return;
+				}
+			}
+			Vector3 targetDir = collision.transform.position - transform.position;
+			float angle = Vector3.Angle(targetDir, transform.up);
+			if (angle > 85f && angle < 95f)
+			{
+				transform.rotation = Quaternion.Euler(new Vector3(90f, 0, transform.eulerAngles.y + 180f));
+			}
+			else if (angle > 85f && angle < 130f)
+			{
+				transform.rotation = Quaternion.Euler(new Vector3(90f, 0, -(180f - transform.eulerAngles.y) + 180f));
+			}
+			else if (angle < 85f)
+			{
+				transform.rotation = Quaternion.Euler(new Vector3(90f, 0, transform.eulerAngles.y - angle));
 			}
 			else
 			{
-				Vector3 targetDir = collision.transform.position - transform.position;
-				float angle = Vector3.Angle(targetDir, transform.up);
-				if (angle > 85f && angle < 95f)
-				{
-					transform.rotation = Quaternion.Euler(new Vector3(90f, 0, transform.eulerAngles.y + 180f));
-				}
-				else if (angle > 85f && angle < 130f)
-				{
-					transform.rotation = Quaternion.Euler(new Vector3(90f, 0, -(180f - transform.eulerAngles.y) + 180f));
-				}
-				else if (angle < 85f)
-				{
-					transform.rotation = Quaternion.Euler(new Vector3(90f, 0, transform.eulerAngles.y - angle));
-				}
-				else
-				{
-					transform.rotation = Quaternion.Euler(new Vector3(90f, 0, (transform.eulerAngles.y - angle) - 180));
-				}
+				transform.rotation = Quaternion.Euler(new Vector3(90f, 0, (transform.eulerAngles.y - angle) - 180));
+			}
+			if (collision.transform.tag == "Bomb")
+				return;
 				colSpeed = collision.transform.GetComponent<Ball_Base>().speed * 0.8f;
 				Invoke("ChangeSpeed", 0.1f);
-			}
 		}
 		speed = speed - 0.5f;
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if(other.transform.tag == "Explosion")
+		{
+			Vector3 targetDir = other.transform.parent.localPosition - transform.localPosition;
+			//Debug.Log(targetDir);
+			float angle = Vector3.Angle(targetDir, Vector3.right);
+			//Debug.Log(angle);
+			transform.rotation = Quaternion.Euler(new Vector3(90f, 0, 180 - angle));
+			speed = 10;
+		}
 	}
 	void ChangeSpeed()
 	{
