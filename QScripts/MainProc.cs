@@ -15,11 +15,17 @@ public class MainProc : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Global.playerX = 0f;
+		Global.playerY = 0f;
+		Global.radio = 0f;
+		Global.gameStatu = Global.GameStatu.Idle;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
+
+
 		if (Input.GetKey(KeyCode.Return) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
 		{
 			player.GetComponent<PlayerControl>().makeHeJump(2f);
