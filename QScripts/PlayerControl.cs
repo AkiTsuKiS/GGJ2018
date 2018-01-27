@@ -64,6 +64,8 @@ public class PlayerControl : MonoBehaviour {
 		{
 			return;
 		}
+		print("P" + power);
+
 		GetComponent<SpriteRenderer>().sprite = jumping;
 		state = "jumping";
 		isJumping = true;
