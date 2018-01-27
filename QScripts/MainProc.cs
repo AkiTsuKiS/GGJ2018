@@ -45,12 +45,13 @@ public class MainProc : MonoBehaviour {
 		{
 			if (hit.transform.IsChildOf(ground.transform))
 			{
+				Vector3 generate = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 15));
 				if (_playerObject == null) 
 				{
 					_playerObject = ObjectCreator.createPrefabs("player", player, "player");
 				}
 
-				_playerObject.transform.position = hit.transform.position;
+				_playerObject.transform.position = new Vector3(generate.x, 100f, generate.z);
 			}
 		}
 	}
