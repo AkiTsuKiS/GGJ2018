@@ -8,6 +8,7 @@ public class MainProc : MonoBehaviour {
 	public GameObject ground;
 	public GameObject border;
 	public GameObject player;
+	public GameObject wave;
 	public Button startButton;
 	private GameObject _playerObject;
 
@@ -105,5 +106,12 @@ public class MainProc : MonoBehaviour {
 		Global.gameStatu = Global.GameStatu.Jumping;
 		_playerObject.GetComponentInChildren<PlayerControl>().makeHeJump(Global.ratio * 2f);
 		MicrophoneHandler.ReplayRecord();
+		EventManager.AddEventListener("JumpEnd", Explosion);
+	}
+
+	void Explosion(object args)
+	{
+		EventManager.RemoveEventListener("JumpEnd", Explosion);
+		ObjectCreator.createPrefabs("wave",wave,"wave");
 	}
 }

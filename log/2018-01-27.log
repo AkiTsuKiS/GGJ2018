@@ -18,3 +18,13 @@
 You probably need to assign the player variable of the MainProc script in the inspector.
   at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
   at ObjectCreator.createPrefabs (System.String prefabs, UnityEngine.GameObject parent, System.String name) [0x00013] in Y:\Work\Unity\GGJ2018\Assets\Scripts\Utils\ObjectCreator.cs:17 
+23:57:14.8629 [L][EventManager] Add Listener : event = JumpEnd, callback = Script (MainProc).Void Explosion(System.Object)
+23:57:17.8199 [L][EventManager] Dispatch Event : event = JumpEndargs = 
+23:57:17.8239 [L][EventManager] Remove Listener : event = JumpEnd, callback = Script (MainProc).Void Explosion(System.Object)
+23:57:17.8279 [E][ObjectCreator] Fail to create prefabs : wave , error = UnityEngine.UnassignedReferenceException: The variable wave of MainProc has not been assigned.
+You probably need to assign the wave variable of the MainProc script in the inspector.
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at ObjectCreator.createPrefabs (System.String prefabs, UnityEngine.GameObject parent, System.String name) [0x00013] in Y:\Work\Unity\GGJ2018\Assets\Scripts\Utils\ObjectCreator.cs:17 
+23:57:40.1179 [L][EventManager] Add Listener : event = JumpEnd, callback = Script (MainProc).Void Explosion(System.Object)
+23:57:43.0989 [L][EventManager] Dispatch Event : event = JumpEndargs = 
+23:57:43.1029 [L][EventManager] Remove Listener : event = JumpEnd, callback = Script (MainProc).Void Explosion(System.Object)
