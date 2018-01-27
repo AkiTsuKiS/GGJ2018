@@ -94,7 +94,7 @@ public class MainProc : MonoBehaviour {
 		yield return new WaitForSeconds(1.5f);
 		startButton.gameObject.SetActive(false);
 		MicrophoneHandler.StopRecord();
-		Global.ratio =  MicrophoneHandler.GetHighestRatio();
+		Global.ratio =  MicrophoneHandler.GetHighestRatio() * 1.4f;
 		print("stop Record + " + Global.ratio);
 		playerJump();
 	}
