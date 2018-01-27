@@ -17,6 +17,9 @@ public class PlayerControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		originalScale = this.transform.localScale;
+	//	normal = Resources.Load("Image/player_normal") as Sprite;
+	//	jumping = Resources.Load("Image/player_jumping") as Sprite;
+	//	landed = Resources.Load("Image/player_jumped") as Sprite;
 	}
 	
 	// Update is called once per frame

@@ -2,51 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MicrophoneHandler : MonoBehaviour
+public class MicrophoneHandler
 {
 	//*****************************************************//
 	//** STATIC *******************************************//
 	//*****************************************************//
-	private static MicrophoneHandler _instance = null;
+	private static AudioSource _instance = null;
 
 	private static void init()
 	{
 		if (_instance == null) 
-			_instance = GameObject.Find("MicrophoneHandler").GetComponent<MicrophoneHandler>();
+			_instance = GameObject.Find("MicrophoneHandler").GetComponent<AudioSource>();
 	}
 
 	public static void StartRecord()
 	{
 		init();
-		_instance.startRec();
-	}
 
-	public static void ReplayRecord()
-	{
-
-	}
-
-	public static void GetVolume()
-	{
-
-	}
-	//*****************************************************//
-
-	private AudioSource _audioSource;
-
-	public void startRec()
-	{
 		if (Microphone.IsRecording(null))
 		{
 			return;
 		}
 		else
 		{
-			_audioSource.clip = Microphone.Start(null, true, 1500, 44100);
+			_instance.clip = Microphone.Start(null, true, 10, 44100);
 		}
 	}
 
-	public void StopRec()
+	public static void StopRecord()
 	{
 		if (Microphone.IsRecording(null))
 		{
@@ -54,22 +37,18 @@ public class MicrophoneHandler : MonoBehaviour
 		}
 	}
 
-	public void ReplayRec()
+	public static void ReplayRecord()
 	{
-		_audioSource.Play();
+		_instance.Play();
 	}
 
-	private void Start()
+	public static float[] GetSampleData()
 	{
-		_audioSource = gameObject.GetComponent<AudioSource>();
+		float[] data = new float[_instance.clip.samples];
+		_instance.clip.GetData(data, 0);
+
+		return data;
 	}
 
-	private void Update()
-	{
-	/*	if (Microphone.IsRecording(null))
-		{
-			_audioSource.clip
-		}
-		*/
-	}
+	//*****************************************************//
 }
