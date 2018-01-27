@@ -22,6 +22,15 @@ public class Ball_Explosion : MonoBehaviour {
 		}
 	}
 
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.transform.tag == "GoldWave" && !explosion || other.transform.tag == "Explosion" && !explosion)
+		{
+			GetComponent<Animator>().Play("Explosion", -1, 0);
+			explosion = true;
+		}
+	}
+
 	void DestroyObj()
 	{
 		Destroy(gameObject);
