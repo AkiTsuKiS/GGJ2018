@@ -24,6 +24,17 @@ public class MainProc : MonoBehaviour {
 		Global.gameStatu = Global.GameStatu.Idle;
 		startButton.gameObject.SetActive(false);
 		startButton.interactable = false;
+		StartCoroutine(ContinueCheckScore());
+	}
+
+	IEnumerator ContinueCheckScore()
+	{
+		while (true)
+		{
+			List<int> scores = GameObject.Find("BallLayer").GetComponent<CountScore>().countScore();
+			Debug.Log("Scores now : " + scores[0] + " " + scores[1] + " " + scores[2]);
+			yield return new WaitForSeconds(1);
+		}
 	}
 	
 	// Update is called once per frame
