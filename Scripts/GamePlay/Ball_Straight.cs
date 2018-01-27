@@ -26,6 +26,11 @@ public class Ball_Straight : Ball_Base {
 		else
 		{
 			speed = 0;
+			rotateSpeed = 0;
+		}
+		if(speed > 0)
+		{
+			rotateSpeed = Global.ratio * 1.5f;
 		}
 	}
 }
