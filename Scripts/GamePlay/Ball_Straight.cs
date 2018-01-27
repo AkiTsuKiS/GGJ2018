@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball_Spin : Ball_Base
-{
+public class Ball_Straight : Ball_Base {
 	float rotateSpeed = 1f;
 	float angleX, angleY;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -14,7 +14,6 @@ public class Ball_Spin : Ball_Base
 	// Update is called once per frame
 	void Update()
 	{
-		transform.Rotate(Vector3.forward * rotateSpeed);
 		transform.Translate(Vector3.right * speed);
 		if (speed > 1f)
 		{
@@ -28,5 +27,4 @@ public class Ball_Spin : Ball_Base
 		{
 			speed = 0;
 		}
-	}
 }
