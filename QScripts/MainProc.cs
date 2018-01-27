@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainProc : MonoBehaviour {
 
 	public GameObject ground;
 	public GameObject border;
 	public GameObject player;
-
+	public Button startButton;
 	private GameObject _playerObject;
 
 	void Awake()
@@ -18,9 +19,11 @@ public class MainProc : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Global.playerX = 0f;
-		Global.playerY = 0f;
-		Global.radio = 0f;
+		Global.playerZ = 0f;
+		Global.ratio = 0f;
 		Global.gameStatu = Global.GameStatu.Idle;
+		startButton.enabled = false;
+		startButton.interactable = false;
 	}
 	
 	// Update is called once per frame
@@ -29,11 +32,11 @@ public class MainProc : MonoBehaviour {
 		if(Input.GetMouseButtonDown(0) && Global.gameStatu == Global.GameStatu.Idle)
 		{
 			playerCreation();
-		}
-
-		if (Input.GetKey(KeyCode.Return) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
-		{
-			player.GetComponent<PlayerControl>().makeHeJump(2f);
+			if (_playerObject)
+			{
+				startButton.interactable = true;
+				startButton.enabled = true;
+			}
 		}
 	}
 
@@ -54,5 +57,36 @@ public class MainProc : MonoBehaviour {
 				_playerObject.transform.position = new Vector3(generate.x, 100f, generate.z);
 			}
 		}
+	}
+
+	public void onClickStart()
+	{
+		Global.playerX = _playerObject.transform.position.x;
+		Global.playerZ = _playerObject.transform.position.z;
+
+		Global.gameStatu = Global.GameStatu.Recording;
+		startButton.interactable = false;
+		StartCoroutine(startRecord());
+	}
+
+	IEnumerator startRecord()
+	{
+		yield return new WaitForSeconds(0.5f);
+		MicrophoneHandler.StartRecord();
+
+	}
+
+	IEnumerator stopRecord()
+	{
+		yield return new WaitForSeconds(1.5f);
+		startButton.enabled = false;
+		MicrophoneHandler.StopRecord();
+		Global.ratio =  MicrophoneHandler.GetHighestRatio();
+	}
+
+	void playerJump()
+	{
+		Global.gameStatu = Global.GameStatu.Jumping;
+		_playerObject.GetComponent<PlayerControl>().makeHeJump(Global.ratio * 2f);
 	}
 }
