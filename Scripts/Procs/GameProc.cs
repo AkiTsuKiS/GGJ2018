@@ -26,7 +26,7 @@ public class GameProc : BaseProc
 		Instance.borderLayer = new BorderLayer("borderLayer", _container);
 		Instance.ballLayer = new BallLayer("ballLayer", _container);
 		Instance.playerLayer = new PlayerLayer("playerLayer",_container);
-		Instance.waveLayer = new WaveLayer("wareLayer",_container);
+		Instance.waveLayer = new WaveLayer("waveLayer",_container);
 	}
 
 	private void start()

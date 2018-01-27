@@ -1,0 +1,8 @@
+03:13:57.0085 [E][ObjectCreator] Fail to create prefabs : 1 , error = System.ArgumentException: The Object you want to instantiate is null.
+  at UnityEngine.Object.CheckNullArgument (System.Object arg, System.String message) [0x00008] in C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:239 
+  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Transform parent, Boolean instantiateInWorldSpace) [0x0001f] in C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:192 
+  at ObjectCreator.createPrefabs (System.String prefabs, UnityEngine.GameObject parent, System.String name) [0x00019] in C:\Users\edwin\Desktop\test001\Assets\Scripts\Utils\ObjectCreator.cs:17 
+03:15:19.0505 [E][ObjectCreator] Fail to create prefabs : 1 , error = System.ArgumentException: The Object you want to instantiate is null.
+  at UnityEngine.Object.CheckNullArgument (System.Object arg, System.String message) [0x00008] in C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:239 
+  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Transform parent, Boolean instantiateInWorldSpace) [0x0001f] in C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:192 
+  at ObjectCreator.createPrefabs (System.String prefabs, UnityEngine.GameObject parent, System.String name) [0x00019] in C:\Users\edwin\Desktop\test001\Assets\Scripts\Utils\ObjectCreator.cs:17 
