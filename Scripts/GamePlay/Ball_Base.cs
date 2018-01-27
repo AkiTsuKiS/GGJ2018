@@ -77,6 +77,15 @@ public class Ball_Base : MonoBehaviour {
 			transform.rotation = Quaternion.Euler(new Vector3(90f, 0, 180 - angle));
 			speed = 10;
 		}
+		if (other.transform.tag == "GoldWave")
+		{
+			Vector3 targetDir = other.transform.parent.localPosition - transform.localPosition;
+			//Debug.Log(targetDir);
+			float angle = Vector3.Angle(targetDir, Vector3.right);
+			//Debug.Log(angle);
+			transform.rotation = Quaternion.Euler(new Vector3(90f, 0, 180 - angle));
+			speed = Global.ratio * 20f;
+		}
 	}
 	void ChangeSpeed()
 	{
