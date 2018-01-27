@@ -22,7 +22,7 @@ public class MainProc : MonoBehaviour {
 		Global.playerZ = 0f;
 		Global.ratio = 0f;
 		Global.gameStatu = Global.GameStatu.Idle;
-		startButton.enabled = false;
+		startButton.gameObject.SetActive(false);
 		startButton.interactable = false;
 	}
 	
@@ -35,7 +35,7 @@ public class MainProc : MonoBehaviour {
 			if (_playerObject)
 			{
 				startButton.interactable = true;
-				startButton.enabled = true;
+				startButton.gameObject.SetActive(true);
 			}
 		}
 	}
@@ -73,20 +73,26 @@ public class MainProc : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(0.5f);
 		MicrophoneHandler.StartRecord();
-
+		print("start Record");
+		StartCoroutine(stopRecord());
 	}
 
 	IEnumerator stopRecord()
 	{
 		yield return new WaitForSeconds(1.5f);
-		startButton.enabled = false;
+		startButton.gameObject.SetActive(false);
 		MicrophoneHandler.StopRecord();
 		Global.ratio =  MicrophoneHandler.GetHighestRatio();
+		print("stop Record + " + Global.ratio);
+		playerJump();
 	}
 
 	void playerJump()
 	{
+		print("playerJump");
+
 		Global.gameStatu = Global.GameStatu.Jumping;
-		_playerObject.GetComponent<PlayerControl>().makeHeJump(Global.ratio * 2f);
+		_playerObject.GetComponentInChildren<PlayerControl>().makeHeJump(Global.ratio * 1f + 1f);
+		MicrophoneHandler.ReplayRecord();
 	}
 }
