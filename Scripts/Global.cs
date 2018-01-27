@@ -17,7 +17,7 @@ public static class Global
 	public static GameStatu gameStatu; 
 	public static float playerX;
 	public static float playerZ;
-	public static float radio;
+	public static float ratio;
 	public static int reward;
 	public static int Excellent;
 	public static int Great;

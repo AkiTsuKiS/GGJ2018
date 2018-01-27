@@ -42,12 +42,19 @@ public class MicrophoneHandler
 		_instance.Play();
 	}
 
-	public static float[] GetSampleData()
+	public static float GetHighestRatio()
 	{
 		float[] data = new float[_instance.clip.samples];
 		_instance.clip.GetData(data, 0);
 
-		return data;
+		float highest = 0f;
+
+		foreach(float d in data)
+		{
+			if (d > highest) highest = d;
+		}
+
+		return highest;
 	}
 
 	//*****************************************************//
