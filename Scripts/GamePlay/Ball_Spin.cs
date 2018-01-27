@@ -6,9 +6,12 @@ public class Ball_Spin : Ball_Base
 {
 	float rotateSpeed = 1f;
 	float angleX, angleY;
+	Sprite twister, twisterItem;
 	// Use this for initialization
 	void Start()
 	{
+		twister = Resources.Load<Sprite>("Image/twister");
+		twisterItem = Resources.Load<Sprite>("Image/twisterItem");
 	}
 
 	// Update is called once per frame
@@ -27,6 +30,13 @@ public class Ball_Spin : Ball_Base
 		else
 		{
 			speed = 0;
+			rotateSpeed = 0;
+			transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = twisterItem;
+		}
+		if (speed > 0)
+		{
+			rotateSpeed = Global.ratio * 1.5f;
+			transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = twister;
 		}
 	}
 }
