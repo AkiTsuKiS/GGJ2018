@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MainProc : MonoBehaviour {
 
@@ -38,8 +39,7 @@ public class MainProc : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
 		if(Input.GetMouseButtonDown(0) && Global.gameStatu == Global.GameStatu.Idle)
 		{
@@ -54,6 +54,8 @@ public class MainProc : MonoBehaviour {
 
 	void playerCreation()
 	{
+		if (EventSystem.current.IsPointerOverGameObject()) return;
+
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast(ray,out hit))

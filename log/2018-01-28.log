@@ -1,0 +1,2 @@
+00:18:15.6759 [L][EventManager] Add Listener : event = JumpEnd, callback = Script (MainProc).Void Explosion(System.Object)
+00:30:12.2799 [L][EventManager] Add Listener : event = JumpEnd, callback = Script (MainProc).Void Explosion(System.Object)
