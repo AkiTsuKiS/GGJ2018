@@ -9,6 +9,8 @@ public class GroundLayer : BaseLayer {
 
 	protected override void init()
 	{
+		GameObject a = ObjectCreator.createPrefabs("1", _container, "1");
+		a.AddComponent<SpriteRenderer>();
 		// refer to Global.level, create Ground object from Prefab to scene.
 	}
 }
