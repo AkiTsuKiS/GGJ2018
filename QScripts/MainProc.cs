@@ -96,7 +96,7 @@ public class MainProc : MonoBehaviour {
 		yield return new WaitForSeconds(1.5f);
 		startButton.gameObject.SetActive(false);
 		MicrophoneHandler.StopRecord();
-		Global.ratio =  MicrophoneHandler.GetHighestRatio() * 1.4f;
+		Global.ratio = MicrophoneHandler.GetHighestRatio() * 1.4f;
 		print("stop Record + " + Global.ratio);
 		playerJump();
 	}
@@ -113,6 +113,8 @@ public class MainProc : MonoBehaviour {
 
 	void Explosion(object args)
 	{
+		print("Explosion");
+
 		EventManager.RemoveEventListener("JumpEnd", Explosion);
 		GameObject _wave = ObjectCreator.createPrefabs("wave",wave,"wave");
 		_wave.transform.position = new Vector3(Global.playerX, _wave.transform.position.y, Global.playerZ);
