@@ -54,7 +54,7 @@ public class MainProc : MonoBehaviour {
 
 	void playerCreation()
 	{
-		if (EventSystem.current.IsPointerOverGameObject()) return;
+		if (EventSystem.current.currentSelectedGameObject) return;
 
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
