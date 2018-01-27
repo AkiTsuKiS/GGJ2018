@@ -19,4 +19,9 @@ public static class Global
 	public static float playerY;
 	public static float radio;
 	public static int reward;
+	public static int Excellent;
+	public static int Great;
+	public static int Good;
+	public static int Fail;
+
 }
