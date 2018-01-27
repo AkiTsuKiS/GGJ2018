@@ -92,7 +92,7 @@ public class MainProc : MonoBehaviour {
 		print("playerJump");
 
 		Global.gameStatu = Global.GameStatu.Jumping;
-		_playerObject.GetComponentInChildren<PlayerControl>().makeHeJump(Global.ratio * 1f + 1f);
+		_playerObject.GetComponentInChildren<PlayerControl>().makeHeJump(Global.ratio * 2f);
 		MicrophoneHandler.ReplayRecord();
 	}
 }
