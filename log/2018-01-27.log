@@ -14,3 +14,7 @@
   at UnityEngine.Object.CheckNullArgument (System.Object arg, System.String message) [0x00008] in C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:239 
   at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Transform parent, Boolean instantiateInWorldSpace) [0x0001f] in C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:192 
   at ObjectCreator.createPrefabs (System.String prefabs, UnityEngine.GameObject parent, System.String name) [0x00019] in Y:\Work\Unity\GGJ2018\Assets\Scripts\Utils\ObjectCreator.cs:17 
+21:26:31.0279 [E][ObjectCreator] Fail to create prefabs : player , error = UnityEngine.UnassignedReferenceException: The variable player of MainProc has not been assigned.
+You probably need to assign the player variable of the MainProc script in the inspector.
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at ObjectCreator.createPrefabs (System.String prefabs, UnityEngine.GameObject parent, System.String name) [0x00013] in Y:\Work\Unity\GGJ2018\Assets\Scripts\Utils\ObjectCreator.cs:17 
