@@ -27,5 +27,9 @@ public class Ball_Straight : Ball_Base {
 		{
 			speed = 0;
 		}
+		if (transform.localPosition.z > 200f)
+		{
+			speed = 0;
+		}
 	}
 }

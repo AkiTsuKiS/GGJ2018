@@ -44,7 +44,11 @@ public class Ball_Spin : Ball_Base
 		if (isMove)
 		{
 			//Vector3 angle = new Vector3(transform.GetChild(0).rotation.x, transform.GetChild(0).rotation.y, transform.GetChild(0).rotation.z);
-			//transform.GetChild(0).localRotation = Quaternion.Euler(transform.GetChild(0).localRotation.x, transform.GetChild(0).localRotation.y, -transform.rotation.z * 360f + 90f);
+			transform.GetChild(0).localRotation = Quaternion.Euler(transform.GetChild(0).localRotation.x, transform.GetChild(0).localRotation.y, -transform.localRotation.eulerAngles.z + 90f);
+		}
+		if (transform.localPosition.z > 200f)
+		{
+			speed = 0;
 		}
 	}
 }
