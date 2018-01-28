@@ -18,14 +18,14 @@ public class Ball_Spin : Ball_Base
 	void Update()
 	{
 		transform.Rotate(Vector3.forward * rotateSpeed);
-		transform.Translate(Vector3.right * speed);
-		if (speed > 1f)
+		transform.Translate(Vector3.right * speed * 0.2f);
+		if (speed > 10f)
 		{
-			speed = speed - (speed * Time.deltaTime * 0.1f);
+			
 		}
 		else if (speed > 0)
 		{
-			speed = speed - 0.1f;
+			speed = speed + 0.1f;
 		}
 		else
 		{
@@ -35,7 +35,7 @@ public class Ball_Spin : Ball_Base
 		}
 		if (speed > 0)
 		{
-			rotateSpeed = Global.ratio * 5f;
+			rotateSpeed = Global.ratio * 0.3f;
 			transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = twister;
 		}
 	}
