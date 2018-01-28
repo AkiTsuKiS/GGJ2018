@@ -26,17 +26,6 @@ public class MainProc : MonoBehaviour {
 		Global.gameStatu = Global.GameStatu.Idle;
 		startButton.gameObject.SetActive(false);
 		startButton.interactable = false;
-		StartCoroutine(ContinueCheckScore());
-	}
-
-	IEnumerator ContinueCheckScore()
-	{
-		while (true)
-		{
-			List<int> scores = GameObject.Find("BallLayer").GetComponent<CountScore>().countScore();
-			Debug.Log("Scores now : " + scores[0] + " " + scores[1] + " " + scores[2]);
-			yield return new WaitForSeconds(1);
-		}
 	}
 	
 	void Update()
@@ -93,7 +82,7 @@ public class MainProc : MonoBehaviour {
 
 	IEnumerator stopRecord()
 	{
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(2f);
 		startButton.gameObject.SetActive(false);
 		MicrophoneHandler.StopRecord();
 		Global.ratio = MicrophoneHandler.GetHighestRatio() * 1.4f;
@@ -114,8 +103,19 @@ public class MainProc : MonoBehaviour {
 	IEnumerator Explosion()
 	{
 		print("Explosion");
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(2.5f);
 		GameObject _wave = ObjectCreator.createPrefabs("wave",wave,"wave");
 		_wave.transform.position = new Vector3(Global.playerX, _wave.transform.position.y, Global.playerZ);
 	}
+
+	IEnumerator ContinueCheckScore()
+	{
+		while (true)
+		{
+			List<int> scores = GameObject.Find("BallLayer").GetComponent<CountScore>().startCountScore();
+			Debug.Log("Scores now : " + scores[0] + " " + scores[1] + " " + scores[2]);
+			yield return new WaitForSeconds(1);
+		}
+	}
+
 }

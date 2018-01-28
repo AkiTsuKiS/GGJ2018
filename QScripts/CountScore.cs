@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CountScore : MonoBehaviour {
-	private GameObject goodZone;
-	private GameObject greatZone;
-	private GameObject groundUpper;
+	public GameObject goodZone;
+	public GameObject greatZone;
+	public GameObject groundUpper;
 
 	// Use this for initialization
 	void Start () {
 		goodZone = GameObject.Find("GoodZone");
 		greatZone = GameObject.Find("GreatZone");
 		groundUpper = GameObject.Find("Ground_upper");
+		goodZone.SetActive(false);
+		greatZone.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -20,8 +22,11 @@ public class CountScore : MonoBehaviour {
 	}
 
 	// return count of [Good, Great, Excellent]
-	public List<int> countScore()
+	public List<int> startCountScore()
 	{
+		goodZone.SetActive(true);
+		greatZone.SetActive(true);
+
 		GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
 		BoxCollider groundBox = groundUpper.GetComponent<BoxCollider>();
 		CapsuleCollider greatZoneBox = greatZone.GetComponent<CapsuleCollider>();

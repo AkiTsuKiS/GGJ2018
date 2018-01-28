@@ -42,7 +42,7 @@ public class PlayerControl : MonoBehaviour {
 						currentAnimationTime / animationTime * Mathf.PI
 						);
 
-				Debug.Log("currentScale" + transform.localScale);
+			//	Debug.Log("currentScale" + transform.localScale);
 			}
 		}
 		if (state == "landed")
