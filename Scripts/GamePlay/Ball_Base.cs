@@ -8,6 +8,10 @@ public class Ball_Base : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision)
 	{
+		if (collision.transform.tag != "Ground")
+		{
+			AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sound/collide"), Camera.main.transform.position, 1f);
+		}
 		if (collision.transform.tag == "BorderRow")
 		{
 			transform.rotation = Quaternion.Euler(new Vector3(90f, 0, -(180f - transform.eulerAngles.y) + 180f));

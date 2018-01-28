@@ -18,6 +18,7 @@ public class Ball_Explosion : MonoBehaviour {
 		if (collision.transform.tag != "Ground" && !explosion && collision.transform.tag != "Player")
 		{
 			GetComponent<Animator>().Play("Explosion", -1, 0);
+			AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sound/explosion"), Camera.main.transform.position, 1f);
 			explosion = true;
 		}
 	}
@@ -27,6 +28,7 @@ public class Ball_Explosion : MonoBehaviour {
 		if (other.transform.tag == "GoldWave" && !explosion || other.transform.tag == "Explosion" && !explosion)
 		{
 			GetComponent<Animator>().Play("Explosion", -1, 0);
+			AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sound/explosion"), Camera.main.transform.position, 1f);
 			explosion = true;
 		}
 	}
