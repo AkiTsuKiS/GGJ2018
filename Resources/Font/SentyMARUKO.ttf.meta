@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: aa92f7d8ee61fd84b9b58f6bfdf28318
+timeCreated: 1517113739
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: SentyMARUKO ??????
+  fontNames:
+  - SentyMARUKO ??????
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
