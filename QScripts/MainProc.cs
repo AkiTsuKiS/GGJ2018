@@ -13,10 +13,11 @@ public class MainProc : MonoBehaviour {
 	public GameObject wave;
 	public GameObject ball;
 	public GameObject banner;
+	public GameObject animateScene;
 	public Button startButton;
 	public Button restartButton;
+	public GameObject heighttext;
 	private GameObject _playerObject;
-
 
 	void Awake()
 	{
@@ -115,13 +116,39 @@ public class MainProc : MonoBehaviour {
 		Global.gameStatu = Global.GameStatu.Jumping;
 		_playerObject.GetComponentInChildren<PlayerControl>().makeHeJump(Global.ratio * 2f);
 		MicrophoneHandler.ReplayRecord();
+		StartCoroutine(cutinAnimate());
+	}
+
+	IEnumerator cutinAnimate()
+	{
+		yield return new WaitForSeconds(1.5f);
+		_playerObject.GetComponentInChildren<PlayerControl>().fallLock = 0f;
+		animateScene.SetActive(true);
+		StartCoroutine(showHeightText());
+	}
+
+	IEnumerator showHeightText()
+	{
+		yield return new WaitForSeconds(1.0f);
+		heighttext.SetActive(true);
+		heighttext.GetComponent<Text>().text = "!" + (int)(Global.ratio * 1000000) + "cm";
+		StartCoroutine(cutinEnd());
+	}
+
+	IEnumerator cutinEnd()
+	{
+		yield return new WaitForSeconds(1.5f);
+		animateScene.SetActive(false);
+		_playerObject.GetComponentInChildren<PlayerControl>().fallLock = 1f;
+		heighttext.SetActive(false);
 		StartCoroutine(Explosion());
 	}
 
 	IEnumerator Explosion()
 	{
 		print("Explosion");
-		yield return new WaitForSeconds(2.5f);
+		yield return new WaitForSeconds(1f);
+		AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sound/thud"), Camera.main.transform.position);
 		GameObject _wave = ObjectCreator.createPrefabs("wave",wave,"wave");
 		_wave.transform.position = new Vector3(Global.playerX, _wave.transform.position.y, Global.playerZ);
 		Global.gameStatu = Global.GameStatu.Explosion;
@@ -129,6 +156,7 @@ public class MainProc : MonoBehaviour {
 
 	void showScore()
 	{
+		AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sound/clear"), Camera.main.transform.position);
 		Global.gameStatu = Global.GameStatu.Reward;
 		List<int> scores = GameObject.Find("BallLayer").GetComponent<CountScore>().startCountScore();
 		Global.Excellent = scores[2];
@@ -145,6 +173,7 @@ public class MainProc : MonoBehaviour {
 
 	public void restart()
 	{
+		AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sound/click_menu_button"), Camera.main.transform.position);
 		SceneManager.LoadScene("Level1", LoadSceneMode.Single);
 	}
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.5748171, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4178,8 +4178,10 @@ MonoBehaviour:
   wave: {fileID: 1299473118}
   ball: {fileID: 1829296802}
   banner: {fileID: 222094664}
+  animateScene: {fileID: 764746332}
   startButton: {fileID: 1558653930}
   restartButton: {fileID: 92660913}
+  heighttext: {fileID: 875027544}
 --- !u!1 &1986007329
 GameObject:
   m_ObjectHideFlags: 0

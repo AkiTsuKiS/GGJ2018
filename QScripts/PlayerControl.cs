@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour {
 	bool isJumping = false;
 	Vector3 originalScale;
 	Vector3 targetScale;
+	public float fallLock = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +27,7 @@ public class PlayerControl : MonoBehaviour {
 	void Update () {
 		if (isJumping)
 		{
-			currentAnimationTime += Time.deltaTime;
+			currentAnimationTime += Time.deltaTime * fallLock;
 			if (currentAnimationTime >= animationTime)
 			{
 				currentAnimationTime = 0;
