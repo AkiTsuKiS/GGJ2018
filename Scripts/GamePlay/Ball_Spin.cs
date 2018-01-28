@@ -35,7 +35,7 @@ public class Ball_Spin : Ball_Base
 		}
 		if (speed > 0)
 		{
-			rotateSpeed = Global.ratio * 1.5f;
+			rotateSpeed = Global.ratio * 5f;
 			transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = twister;
 		}
 	}

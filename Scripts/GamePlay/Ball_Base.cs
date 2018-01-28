@@ -34,9 +34,9 @@ public class Ball_Base : MonoBehaviour {
 				if (collision.transform.GetComponent<Ball_Base>().speed < 0.1f)
 				{
 					collision.transform.GetComponent<Ball_Base>().speed = speed;
-					speed = speed / 10f;
+					speed = speed * 0.8f;
 					collision.transform.rotation = transform.rotation;
-					speed = speed - 0.5f;
+					speed = speed - 0.2f;
 					return;
 				}
 			}
@@ -63,7 +63,7 @@ public class Ball_Base : MonoBehaviour {
 				colSpeed = collision.transform.GetComponent<Ball_Base>().speed * 0.8f;
 				Invoke("ChangeSpeed", 0.1f);
 		}
-		speed = speed - 0.5f;
+		speed = speed - 0.2f;
 	}
 
 	private void OnTriggerEnter(Collider other)
