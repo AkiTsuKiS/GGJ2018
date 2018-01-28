@@ -21,6 +21,7 @@ public class Ray_getObj : MonoBehaviour {
 			if (hit.transform.name == "StartBtn")
 			{
 				hit.transform.GetComponent<Animator>().Play("ChangeScene", -1, 0);
+				AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sound/click_menu_button"), Camera.main.transform.position);
 			}
 		}
 	}
