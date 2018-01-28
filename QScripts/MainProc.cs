@@ -136,10 +136,10 @@ public class MainProc : MonoBehaviour {
 		Global.Good = scores[0];
 		Global.Fail = scores[3];
 		banner.SetActive(true);
-		GameObject.Find("excellentText").GetComponent<TextMesh>().text = Global.Excellent.ToString();
-		GameObject.Find("greatText").GetComponent<TextMesh>().text = Global.Great.ToString();
-		GameObject.Find("goodText").GetComponent<TextMesh>().text = Global.Good.ToString();
-		GameObject.Find("failText").GetComponent<TextMesh>().text = Global.Fail.ToString();
+		GameObject.Find("excellentText").GetComponent<Text>().text = Global.Excellent.ToString();
+		GameObject.Find("greatText").GetComponent<Text>().text = Global.Great.ToString();
+		GameObject.Find("goodText").GetComponent<Text>().text = Global.Good.ToString();
+		GameObject.Find("failText").GetComponent<Text>().text = Global.Fail.ToString();
 		restartButton.gameObject.SetActive(true);
 	}
 
