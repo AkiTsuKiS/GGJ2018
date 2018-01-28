@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainProc : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class MainProc : MonoBehaviour {
 	public GameObject ball;
 	public GameObject banner;
 	public Button startButton;
+	public Button restartButton;
 	private GameObject _playerObject;
 
 
@@ -30,6 +32,7 @@ public class MainProc : MonoBehaviour {
 		startButton.gameObject.SetActive(false);
 		startButton.interactable = false;
 		banner.SetActive(false);
+		restartButton.gameObject.SetActive(false);
 	}
 	
 	void Update()
@@ -137,5 +140,11 @@ public class MainProc : MonoBehaviour {
 		GameObject.Find("greatText").GetComponent<TextMesh>().text = Global.Great.ToString();
 		GameObject.Find("goodText").GetComponent<TextMesh>().text = Global.Good.ToString();
 		GameObject.Find("failText").GetComponent<TextMesh>().text = Global.Fail.ToString();
+		restartButton.gameObject.SetActive(true);
+	}
+
+	public void restart()
+	{
+		SceneManager.LoadScene("Level1", LoadSceneMode.Single);
 	}
 }
