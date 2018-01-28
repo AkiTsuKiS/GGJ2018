@@ -93,7 +93,7 @@ public class MainProc : MonoBehaviour {
 
 	IEnumerator startRecord()
 	{
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.2f);
 		MicrophoneHandler.StartRecord();
 		print("start Record");
 		StartCoroutine(stopRecord());
@@ -101,7 +101,7 @@ public class MainProc : MonoBehaviour {
 
 	IEnumerator stopRecord()
 	{
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1.5f);
 		startButton.gameObject.SetActive(false);
 		MicrophoneHandler.StopRecord();
 		Global.ratio = MicrophoneHandler.GetHighestRatio() * 1.4f;
@@ -124,6 +124,7 @@ public class MainProc : MonoBehaviour {
 		yield return new WaitForSeconds(1.5f);
 		_playerObject.GetComponentInChildren<PlayerControl>().fallLock = 0f;
 		animateScene.SetActive(true);
+		MicrophoneHandler.ReplayRecord();
 		StartCoroutine(showHeightText());
 	}
 
