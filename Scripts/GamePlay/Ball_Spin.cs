@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Ball_Spin : Ball_Base
 {
-	float rotateSpeed = 1f;
+	float rotateSpeed = 0f;
 	float angleX, angleY;
 	Sprite twister;
+	bool isMove = false;
 	// Use this for initialization
 	void Start()
 	{
@@ -26,11 +27,24 @@ public class Ball_Spin : Ball_Base
 		{
 			speed = speed + 0.1f;
 		}
-		if (speed > 0)
+		if (speed > 0 && !isMove)
 		{
-			rotateSpeed = Global.ratio * 0.3f;
+			isMove = true;
+			if (Random.Range(0, 1000) < 500)
+			{
+				rotateSpeed = Global.ratio * 0.3f;
+			}
+			else
+			{
+				rotateSpeed = -Global.ratio * 0.3f;
+			}
 			transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = twister;
 			Destroy(gameObject, 5f);
+		}
+		if (isMove)
+		{
+			//Vector3 angle = new Vector3(transform.GetChild(0).rotation.x, transform.GetChild(0).rotation.y, transform.GetChild(0).rotation.z);
+			//transform.GetChild(0).localRotation = Quaternion.Euler(transform.GetChild(0).localRotation.x, transform.GetChild(0).localRotation.y, -transform.rotation.z * 360f + 90f);
 		}
 	}
 }

@@ -15,7 +15,7 @@ public class Ball_Explosion : MonoBehaviour {
 	}
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.transform.tag != "Ground" && !explosion)
+		if (collision.transform.tag != "Ground" && !explosion && collision.transform.tag != "Player")
 		{
 			GetComponent<Animator>().Play("Explosion", -1, 0);
 			explosion = true;
