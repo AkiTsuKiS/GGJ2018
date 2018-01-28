@@ -16,7 +16,7 @@ public class GoldWave : MonoBehaviour {
 		{
 			waveSize += Global.ratio * Time.deltaTime * 2f;
 			transform.localScale = Vector3.one * waveSize;
-			GetComponent<SphereCollider>().radius = (250f * Global.ratio) * waveSize;
+			GetComponent<SphereCollider>().radius = Mathf.Sin(waveSize/Global.ratio*Mathf.PI/1.4f) * 250f * 1.2f;
 		}
 	}
 
