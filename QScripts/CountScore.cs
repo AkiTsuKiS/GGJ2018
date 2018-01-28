@@ -31,14 +31,20 @@ public class CountScore : MonoBehaviour {
 		BoxCollider groundBox = groundUpper.GetComponent<BoxCollider>();
 		CapsuleCollider greatZoneBox = greatZone.GetComponent<CapsuleCollider>();
 		CapsuleCollider goodZoneBox = goodZone.GetComponent<CapsuleCollider>();
-		List<int> ret = new List<int>() { 0, 0, 0};
+		List<int> ret = new List<int>() { 0, 0, 0, 0 };
 		foreach (GameObject ball in balls)
 		{
+			if (!ball.name.StartsWith("StraightTemplate"))
+			{
+				continue;
+			}
+
 			SphereCollider ballSphere = ball.GetComponent<SphereCollider>();
 			// Check if not table, continue
 			if (!ballSphere.bounds.Intersects(groundBox.bounds))
 			{
 				Debug.Log(ball + " is not on table");
+				ret[3]++;
 				continue;
 			}
 			// Check if not in great zone => excellent

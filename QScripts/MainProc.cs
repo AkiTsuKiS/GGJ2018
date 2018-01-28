@@ -10,8 +10,11 @@ public class MainProc : MonoBehaviour {
 	public GameObject border;
 	public GameObject player;
 	public GameObject wave;
+	public GameObject ball;
+	public GameObject banner;
 	public Button startButton;
 	private GameObject _playerObject;
+
 
 	void Awake()
 	{
@@ -26,6 +29,7 @@ public class MainProc : MonoBehaviour {
 		Global.gameStatu = Global.GameStatu.Idle;
 		startButton.gameObject.SetActive(false);
 		startButton.interactable = false;
+		banner.SetActive(false);
 	}
 	
 	void Update()
@@ -38,6 +42,17 @@ public class MainProc : MonoBehaviour {
 				startButton.interactable = true;
 				startButton.gameObject.SetActive(true);
 			}
+		}
+
+		if(Global.gameStatu == Global.GameStatu.Explosion)
+		{
+			foreach(Ball_Straight bs in ball.GetComponentsInChildren<Ball_Straight>())
+			{
+				if (wave.transform.childCount > 0) return;
+				if (bs.speed > 0) return;
+			}
+
+			showScore();
 		}
 	}
 
@@ -106,16 +121,21 @@ public class MainProc : MonoBehaviour {
 		yield return new WaitForSeconds(2.5f);
 		GameObject _wave = ObjectCreator.createPrefabs("wave",wave,"wave");
 		_wave.transform.position = new Vector3(Global.playerX, _wave.transform.position.y, Global.playerZ);
+		Global.gameStatu = Global.GameStatu.Explosion;
 	}
 
-	IEnumerator ContinueCheckScore()
+	void showScore()
 	{
-		while (true)
-		{
-			List<int> scores = GameObject.Find("BallLayer").GetComponent<CountScore>().startCountScore();
-			Debug.Log("Scores now : " + scores[0] + " " + scores[1] + " " + scores[2]);
-			yield return new WaitForSeconds(1);
-		}
+		Global.gameStatu = Global.GameStatu.Reward;
+		List<int> scores = GameObject.Find("BallLayer").GetComponent<CountScore>().startCountScore();
+		Global.Excellent = scores[2];
+		Global.Great = scores[1];
+		Global.Good = scores[0];
+		Global.Fail = scores[3];
+		banner.SetActive(true);
+		GameObject.Find("excellentText").GetComponent<TextMesh>().text = Global.Excellent.ToString();
+		GameObject.Find("greatText").GetComponent<TextMesh>().text = Global.Great.ToString();
+		GameObject.Find("goodText").GetComponent<TextMesh>().text = Global.Good.ToString();
+		GameObject.Find("failText").GetComponent<TextMesh>().text = Global.Fail.ToString();
 	}
-
 }
